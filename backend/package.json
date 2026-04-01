@@ -1,0 +1,16 @@
+{
+  "name": "musicconnect-backend",
+  "version": "1.0.0",
+  "description": "Backend API for MusicConnect Korea",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "init-db": "node src/db/init.js",
+    "dev": "node src/server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "sqlite3": "^5.1.6"
+  }
+}

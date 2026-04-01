@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MusicConnect Korea | 나의 인생곡 공유</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="glass-bg"></div>
+    
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1 class="logo">MusicConnect <span>Korea</span></h1>
+            <button class="btn-primary" id="openModalBtn">음악 추천하기</button>
+        </div>
+    </nav>
+
+    <main class="container">
+        <header class="hero">
+            <h2>당신의 인생곡을 소개해주세요</h2>
+            <p>한국의 숨은 명곡들을 발견하고, 새로운 음악적 취향을 나누는 공간입니다.</p>
+        </header>
+
+        <section class="filters">
+            <button class="filter-btn active" data-genre="all">전체</button>
+            <button class="filter-btn" data-genre="kpop">K-Pop</button>
+            <button class="filter-btn" data-genre="indie">인디</button>
+            <button class="filter-btn" data-genre="citypop">시티팝</button>
+            <button class="filter-btn" data-genre="hiphop">힙합</button>
+            <button class="filter-btn" data-genre="ballad">발라드</button>
+        </section>
+
+        <section class="feed" id="feedContainer">
+            <!-- Posts will be generated here dynamically -->
+            <div class="loader">로딩중...</div>
+        </section>
+    </main>
+
+    <!-- Upload Modal -->
+    <div class="modal-overlay" id="uploadModal">
+        <div class="modal">
+            <button class="close-btn" id="closeModalBtn">&times;</button>
+            <h3>새로운 노래 추천하기</h3>
+            <form id="postForm" class="upload-form">
+                <div class="form-group">
+                    <label>추천 글 제목</label>
+                    <input type="text" id="title" placeholder="어떤 기분일 때 듣기 좋은가요?" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>노래 제목</label>
+                        <input type="text" id="song_name" placeholder="예: 밤편지" required>
+                    </div>
+                    <div class="form-group">
+                        <label>아티스트</label>
+                        <input type="text" id="artist_name" placeholder="예: 아이유(IU)" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>장르/무드</label>
+                        <select id="genre">
+                            <option value="kpop">K-Pop</option>
+                            <option value="indie">인디</option>
+                            <option value="citypop">시티팝</option>
+                            <option value="hiphop">힙합</option>
+                            <option value="ballad">발라드</option>
+                            <option value="other">기타</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>YouTube 링크 (선택)</label>
+                        <input type="url" id="youtube_url" placeholder="https://youtube.com/watch?v=...">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>추천 이유</label>
+                    <textarea id="content" rows="4" placeholder="당신에게 이 노래가 특별한 이유를 적어주세요!" required></textarea>
+                </div>
+                <button type="submit" class="btn-primary w-100 mt-2">추천 등록하기</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
