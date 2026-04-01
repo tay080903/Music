@@ -1,6 +1,8 @@
 import sqlite3
+import os
 
-DATABASE = 'music.sqlite'
+# Vercel's read-only file system allows writing only to /tmp
+DATABASE = '/tmp/music.sqlite' if os.getenv('VERCEL') else 'music.sqlite'
 
 def get_db():
     conn = sqlite3.connect(DATABASE)
